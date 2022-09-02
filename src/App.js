@@ -1,6 +1,18 @@
 function App() {
+
+  let Today = new Date(),
+    Year = Today.getFullYear(),
+    Month = (Today.getMonth()+1),
+    Day = Today.getDate();
+
+    Month = (Month < 10) ? '0' + Month : Month;
+    Day = (Day < 10) ? '0' + Day : Day;
+
+  let Today_show = Year + '.' + Month + '.' + Day;
+  
   return (
     <div>
+
       <h1 className="text-center font-gongb text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
 
       <div className="w-full px-3 grid gap-0 grid-cols-5 grid-rows-2">
@@ -56,6 +68,7 @@ function App() {
 
       <div className="text-center text-[#787878] text-sm mt-20">
         <p>© 2022. SourceH</p>
+        <p>{Today_show}</p>
       </div>
     </div>
   );
