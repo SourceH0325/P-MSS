@@ -11,23 +11,23 @@ function App() {
     Month = (Month < 10) ? '0' + Month : Month;
     Day = (Day < 10) ? '0' + Day : Day;
 
-  /* let API_TODAY = Year + Month + Day; */
   let Today_show = Year + '.' + Month + '.' + Day;
 
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=20220905`) /* 현재 테스트로 2022년 09월 05일로 설정함 기존: ${API_TODAY} */
+    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=20220905`)
       .then((response) => {
         setData(response.data);
       });
-  }, [/*API_TODAY*/]);
+  }, []);
 
   if (!data) {
     return console.log('로딩중...');
   }
 
-  let MEAL = data && data.mealServiceDietInfo[1].row[0].DDISH_NM;
+  let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
+  console.log(MEAL);
   let MEAL2 = MEAL.replace(/\s/g,'');
   let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
   let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
