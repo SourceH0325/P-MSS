@@ -19,8 +19,9 @@
 
 html {
   font-family: 'GongGothicMedium';
+  background-color: #212529;
 }
 
-body {
-  background-color: #212529;
+::-webkit-scrollbar {
+  display: none;
 }
