@@ -16,7 +16,7 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=20220905`)
+    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=20220905`)
       .then((response) => {
         setData(response.data);
       });
