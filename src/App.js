@@ -30,7 +30,7 @@ function App() {
   let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
   let MEAL2 = MEAL.replace(/\s/g,'');
   let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
-  let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, "");
+  let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
 
   
   return (
