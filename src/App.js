@@ -27,7 +27,7 @@ function App() {
     return console.log('로딩중...');
   }
 
-  let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
+  let MEAL = data && data.mealServiceDietInfo[1].row[0].DDISH_NM;
   let MEAL2 = MEAL.replace(/\s/g,'');
   let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
   let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
