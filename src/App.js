@@ -16,7 +16,7 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=20220905`)
+    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=20220905`)
       .then((response) => {
         setData(response.data);
       });
@@ -26,7 +26,6 @@ function App() {
     return console.log('로딩중...');
   }
 
-  console.log(data);
   let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
   let MEAL2 = MEAL.replace(/\s/g,'');
   let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
