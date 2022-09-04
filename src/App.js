@@ -44,11 +44,11 @@ function App() {
     return (
       <div>
 
-        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
 
         <div className="w-full text-center">
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-4xl">시간표 데이터가 없습니다!</h1>
+            <h1 className="text-3xl sm:text-4xl">시간표 데이터가 없습니다!</h1>
           </div>
         </div>
 
@@ -68,7 +68,7 @@ function App() {
           <i className="fa-solid fa-book fa-8x"></i>
         </div>
 
-        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식 데이터가 없습니다!</h1>
         </div>
@@ -83,7 +83,7 @@ function App() {
     return (
       <div>
 
-        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
 
         <div className="w-full text-center">
           <div className="text-center text-[#f1f1f1]">
@@ -107,7 +107,7 @@ function App() {
           <i className="fa-solid fa-book fa-8x"></i>
         </div>
 
-        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식 데이터가 없습니다!</h1>
         </div>
@@ -121,9 +121,20 @@ function App() {
   } else if (!data1 || !data1.hisTimetable[1].row[4]) { // 데이터가 없으면
 
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
+    let TIME1_R = TIME1.replace(/\s/g,'');
+    let TIME1_RE = TIME1_R.replace('*', '');
+
     let TIME2 = data1.hisTimetable[1].row[1].ITRT_CNTNT;
+    let TIME2_R = TIME2.replace(/\s/g,'');
+    let TIME2_RE = TIME2_R.replace('*', '');
+
     let TIME3 = data1.hisTimetable[1].row[2].ITRT_CNTNT;
+    let TIME3_R = TIME3.replace(/\s/g,'');
+    let TIME3_RE = TIME3_R.replace('*', '');
+
     let TIME4 = data1.hisTimetable[1].row[3].ITRT_CNTNT;
+    let TIME4_R = TIME4.replace(/\s/g,'');
+    let TIME4_RE = TIME4_R.replace('*', '');
 
     let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL2 = MEAL.replace(/\s/g,'');
@@ -133,27 +144,27 @@ function App() {
     return (
       <div>
 
-        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
 
         <div className="w-full px-3 grid gap-0 md:grid-cols-4 md:grid-rows-2 grid-cols-1 grid-rows-4">
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME1}</h1>
+            <h1 className="font-gongb text-3xl">{TIME1_RE}</h1>
             <p className="text-[#787878]">1교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME2}</h1>
+            <h1 className="font-gongb text-3xl">{TIME2_RE}</h1>
             <p className="text-[#787878]">2교시</p>
           </div>
           
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME3}</h1>
+            <h1 className="font-gongb text-3xl">{TIME3_RE}</h1>
             <p className="text-[#787878]">3교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME4}</h1>
+            <h1 className="font-gongb text-3xl">{TIME4_RE}</h1>
             <p className="text-[#787878]">4교시</p>
           </div>
 
@@ -175,7 +186,7 @@ function App() {
           <i className="fa-solid fa-book fa-8x"></i>
         </div>
 
-        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
         </div>
@@ -187,12 +198,30 @@ function App() {
       </div>
     )
   } else if (!data1 || !data1.hisTimetable[1].row[6]) { // 데이터가 있으면
+
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
+    let TIME1_R = TIME1.replace(/\s/g,'');
+    let TIME1_RE = TIME1_R.replace('*', '');
+
     let TIME2 = data1.hisTimetable[1].row[1].ITRT_CNTNT;
+    let TIME2_R = TIME2.replace(/\s/g,'');
+    let TIME2_RE = TIME2_R.replace('*', '');
+
     let TIME3 = data1.hisTimetable[1].row[2].ITRT_CNTNT;
+    let TIME3_R = TIME3.replace(/\s/g,'');
+    let TIME3_RE = TIME3_R.replace('*', '');
+
     let TIME4 = data1.hisTimetable[1].row[3].ITRT_CNTNT;
+    let TIME4_R = TIME4.replace(/\s/g,'');
+    let TIME4_RE = TIME4_R.replace('*', '');
+
     let TIME5 = data1.hisTimetable[1].row[4].ITRT_CNTNT;
+    let TIME5_R = TIME5.replace(/\s/g,'');
+    let TIME5_RE = TIME5_R.replace('*', '');
+
     let TIME6 = data1.hisTimetable[1].row[5].ITRT_CNTNT;
+    let TIME6_R = TIME6.replace(/\s/g,'');
+    let TIME6_RE = TIME6_R.replace('*', '');
 
     let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL2 = MEAL.replace(/\s/g,'');
@@ -202,37 +231,37 @@ function App() {
     return (
       <div>
 
-        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
 
         <div className="w-full px-3 grid gap-0 md:grid-cols-6 md:grid-rows-2 grid-cols-1 grid-rows-6">
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME1}</h1>
+            <h1 className="font-gongb text-3xl">{TIME1_RE}</h1>
             <p className="text-[#787878]">1교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME2}</h1>
+            <h1 className="font-gongb text-3xl">{TIME2_RE}</h1>
             <p className="text-[#787878]">2교시</p>
           </div>
           
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME3}</h1>
+            <h1 className="font-gongb text-3xl">{TIME3_RE}</h1>
             <p className="text-[#787878]">3교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME4}</h1>
+            <h1 className="font-gongb text-3xl">{TIME4_RE}</h1>
             <p className="text-[#787878]">4교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME5}</h1>
+            <h1 className="font-gongb text-3xl">{TIME5_RE}</h1>
             <p className="text-[#787878]">5교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME6}</h1>
+            <h1 className="font-gongb text-3xl">{TIME6_RE}</h1>
             <p className="text-[#787878]">6교시</p>
           </div>
 
@@ -254,7 +283,7 @@ function App() {
           <i className="fa-solid fa-book fa-8x"></i>
         </div>
 
-        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
         </div>
@@ -266,13 +295,34 @@ function App() {
       </div>
     )
   } else {
+
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
+    let TIME1_R = TIME1.replace(/\s/g,'');
+    let TIME1_RE = TIME1_R.replace('*', '');
+
     let TIME2 = data1.hisTimetable[1].row[1].ITRT_CNTNT;
+    let TIME2_R = TIME2.replace(/\s/g,'');
+    let TIME2_RE = TIME2_R.replace('*', '');
+
     let TIME3 = data1.hisTimetable[1].row[2].ITRT_CNTNT;
+    let TIME3_R = TIME3.replace(/\s/g,'');
+    let TIME3_RE = TIME3_R.replace('*', '');
+
     let TIME4 = data1.hisTimetable[1].row[3].ITRT_CNTNT;
+    let TIME4_R = TIME4.replace(/\s/g,'');
+    let TIME4_RE = TIME4_R.replace('*', '');
+
     let TIME5 = data1.hisTimetable[1].row[4].ITRT_CNTNT;
+    let TIME5_R = TIME5.replace(/\s/g,'');
+    let TIME5_RE = TIME5_R.replace('*', '');
+
     let TIME6 = data1.hisTimetable[1].row[5].ITRT_CNTNT;
+    let TIME6_R = TIME6.replace(/\s/g,'');
+    let TIME6_RE = TIME6_R.replace('*', '');
+
     let TIME7 = data1.hisTimetable[1].row[6].ITRT_CNTNT;
+    let TIME7_R = TIME7.replace(/\s/g,'');
+    let TIME7_RE = TIME7_R.replace('*', '');
 
     let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL2 = MEAL.replace(/\s/g,'');
@@ -282,42 +332,42 @@ function App() {
     return (
       <div>
 
-        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
 
         <div className="w-full px-3 grid gap-0 md:grid-cols-7 md:grid-rows-2 grid-cols-1 grid-rows-7">
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME1}</h1>
+            <h1 className="font-gongb text-3xl">{TIME1_RE}</h1>
             <p className="text-[#787878]">1교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME2}</h1>
+            <h1 className="font-gongb text-3xl">{TIME2_RE}</h1>
             <p className="text-[#787878]">2교시</p>
           </div>
           
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME3}</h1>
+            <h1 className="font-gongb text-3xl">{TIME3_RE}</h1>
             <p className="text-[#787878]">3교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME4}</h1>
+            <h1 className="font-gongb text-3xl">{TIME4_RE}</h1>
             <p className="text-[#787878]">4교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME5}</h1>
+            <h1 className="font-gongb text-3xl">{TIME5_RE}</h1>
             <p className="text-[#787878]">5교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME6}</h1>
+            <h1 className="font-gongb text-3xl">{TIME6_RE}</h1>
             <p className="text-[#787878]">6교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-3xl">{TIME7}</h1>
+            <h1 className="font-gongb text-3xl">{TIME7_RE}</h1>
             <p className="text-[#787878]">7교시</p>
           </div>
 
@@ -339,7 +389,7 @@ function App() {
           <i className="fa-solid fa-book fa-8x"></i>
         </div>
 
-        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
         </div>
