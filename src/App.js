@@ -40,11 +40,11 @@ function App() {
       <div className="w-full px-3 grid gap-0 md:grid-cols-5 md:grid-rows-2 grid-cols-1 grid-rows-5">
         <div className="text-center text-[#787878]">
           <h1 className="font-gongb text-4xl">수학</h1>
-          <p>6교시</p>
+          <p>4교시</p>
         </div>
 
         <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl md:pt-2 md:pl-0 pl-4 rotate-90 md:rotate-0">{'<'}</h1>
+          <h1 className="font-gongb text-4xl md:pt-0 md:pl-5 pr-4 -rotate-90 md:rotate-180">{'<'}</h1>
         </div>
 
         <div className="text-center text-[#f1f1f1]">
@@ -53,12 +53,12 @@ function App() {
         </div>
 
         <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl md:pt-2 md:pl-0 pl-4 rotate-90 md:rotate-0">{'<'}</h1>
+          <h1 className="font-gongb text-4xl md:pt-0 md:pl-5 pr-4 -rotate-90 md:rotate-180">{'<'}</h1>
         </div>
 
         <div className="text-center text-[#787878]">
           <h1 className="font-gongb text-4xl">문학</h1>
-          <p>4교시</p>
+          <p>6교시</p>
         </div>
       </div>
 
