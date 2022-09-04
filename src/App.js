@@ -69,8 +69,8 @@ function App() {
         </div>
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
-        <div className="text-center text-[#f1f1f1] text-4xl">
-          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식 데이터가 없습니다!</h1>
+        <div className="text-center text-[#f1f1f1] text-3xl sm:text-4xl">
+          <h1 className="mt-5 mb-5">급식 데이터가 없습니다!</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
@@ -87,7 +87,7 @@ function App() {
 
         <div className="w-full text-center">
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="font-gongb text-4xl">시간표 데이터가 없습니다!</h1>
+            <h1 className="text-3xl sm:text-4xl">시간표 데이터가 없습니다!</h1>
           </div>
         </div>
 
@@ -108,8 +108,8 @@ function App() {
         </div>
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
-        <div className="text-center text-[#f1f1f1] text-4xl">
-          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식 데이터가 없습니다!</h1>
+        <div className="text-center text-[#f1f1f1] text-3xl sm:text-4xl">
+          <h1 className="mt-5 mb-5">급식 데이터가 없습니다!</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
