@@ -15,6 +15,14 @@ function App() {
   let Today_show = Year + '.' + Month + '.' + Day;
 
   const [data, setData] = useState(null);
+  const [data1, setData1] = useState(null);
+
+  useEffect(() => {
+    axios.post(`https://open.neis.go.kr/hub/hisTimetable?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&ALL_TI_YMD=${API_TODAY}&AY=2022&SEM=2&GRADE=2&CLASS_NM=2`)
+      .then(response => {
+        setData1(response.data);
+      })
+  }, [API_TODAY]);
 
   useEffect(() => {
     axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=${API_TODAY}`)
@@ -24,129 +32,323 @@ function App() {
   }, [API_TODAY]);
 
   if (!data) {
-    return console.log('로딩중...');
+    return console.log('급식 데이터 로딩중...');
+  }
+
+  if (!data1) {
+    return console.log('시간표 데이터 로딩중...');
   }
 
   if (!data || !data.mealServiceDietInfo) { // 데이터가 없으면
+
     return (
       <div>
 
-      <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
 
-      <div className="w-full px-3 grid gap-0 md:grid-cols-5 md:grid-rows-2 grid-cols-1 grid-rows-5">
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl">수학</h1>
-          <p>4교시</p>
+        <div className="w-full text-center">
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-4xl">시간표 데이터가 없습니다!</h1>
+          </div>
         </div>
 
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl md:pt-0 md:pl-5 pr-4 -rotate-90 md:rotate-180">{'<'}</h1>
+        <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-play fa-8x"></i>
         </div>
 
-        <div className="text-center text-[#f1f1f1]">
-          <h1 className="font-gongb text-4xl">전자회로</h1>
-          <p className="text-[#787878]">5교시</p>
+        <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-square fa-8x"></i>
         </div>
 
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl md:pt-0 md:pl-5 pr-4 -rotate-90 md:rotate-180">{'<'}</h1>
+        <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-face-laugh fa-8x"></i>
         </div>
 
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl">문학</h1>
-          <p>6교시</p>
+        <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-book fa-8x"></i>
+        </div>
+
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <div className="text-center text-[#f1f1f1] text-4xl">
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식 데이터가 없습니다!</h1>
+        </div>
+
+        <div className="text-center text-[#787878] text-sm mt-20">
+          <p>© 2022. SourceH</p>
+          <p>{Today_show}</p>
         </div>
       </div>
-
-      <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-play fa-8x"></i>
-      </div>
-
-      <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-square fa-8x"></i>
-      </div>
-
-      <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-face-laugh fa-8x"></i>
-      </div>
-
-      <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-book fa-8x"></i>
-      </div>
-
-      <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
-      <div className="text-center text-[#f1f1f1] text-4xl">
-        <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식이 없습니다!</h1>
-      </div>
-
-      <div className="text-center text-[#787878] text-sm mt-20">
-        <p>© 2022. SourceH</p>
-        <p>{Today_show}</p>
-      </div>
-    </div>
     )
-  } 
-  else {
+  } else if (!data1 || !data1.hisTimetable) { // 데이터가 없으면
+    return (
+      <div>
+
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+
+        <div className="w-full text-center">
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-4xl">시간표 데이터가 없습니다!</h1>
+          </div>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-play fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-square fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-face-laugh fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-book fa-8x"></i>
+        </div>
+
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <div className="text-center text-[#f1f1f1] text-4xl">
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">급식 데이터가 없습니다!</h1>
+        </div>
+
+        <div className="text-center text-[#787878] text-sm mt-20">
+          <p>© 2022. SourceH</p>
+          <p>{Today_show}</p>
+        </div>
+      </div>
+    )
+  } else if (!data1 || !data1.hisTimetable[1].row[4]) { // 데이터가 없으면
+
+    let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
+    let TIME2 = data1.hisTimetable[1].row[1].ITRT_CNTNT;
+    let TIME3 = data1.hisTimetable[1].row[2].ITRT_CNTNT;
+    let TIME4 = data1.hisTimetable[1].row[3].ITRT_CNTNT;
+
     let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL2 = MEAL.replace(/\s/g,'');
     let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
     let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
+
     return (
       <div>
 
-      <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
 
-      <div className="w-full px-3 grid gap-0 md:grid-cols-5 md:grid-rows-2 grid-cols-1 grid-rows-5">
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl">수학</h1>
-          <p>4교시</p>
+        <div className="w-full px-3 grid gap-0 md:grid-cols-4 md:grid-rows-2 grid-cols-1 grid-rows-4">
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME1}</h1>
+            <p className="text-[#787878]">1교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME2}</h1>
+            <p className="text-[#787878]">2교시</p>
+          </div>
+          
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME3}</h1>
+            <p className="text-[#787878]">3교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME4}</h1>
+            <p className="text-[#787878]">4교시</p>
+          </div>
+
         </div>
 
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl md:pt-0 md:pl-5 pr-4 -rotate-90 md:rotate-180">{'<'}</h1>
+        <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-play fa-8x"></i>
         </div>
 
-        <div className="text-center text-[#f1f1f1]">
-          <h1 className="font-gongb text-4xl">전자회로</h1>
-          <p className="text-[#787878]">5교시</p>
+        <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-square fa-8x"></i>
         </div>
 
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl md:pt-0 md:pl-5 pr-4 -rotate-90 md:rotate-180">{'<'}</h1>
+        <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-face-laugh fa-8x"></i>
         </div>
 
-        <div className="text-center text-[#787878]">
-          <h1 className="font-gongb text-4xl">문학</h1>
-          <p>6교시</p>
+        <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-book fa-8x"></i>
+        </div>
+
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <div className="text-center text-[#f1f1f1] text-4xl">
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
+        </div>
+
+        <div className="text-center text-[#787878] text-sm mt-20">
+          <p>© 2022. SourceH</p>
+          <p>{Today_show}</p>
         </div>
       </div>
+    )
+  } else if (!data1 || !data1.hisTimetable[1].row[6]) { // 데이터가 있으면
+    let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
+    let TIME2 = data1.hisTimetable[1].row[1].ITRT_CNTNT;
+    let TIME3 = data1.hisTimetable[1].row[2].ITRT_CNTNT;
+    let TIME4 = data1.hisTimetable[1].row[3].ITRT_CNTNT;
+    let TIME5 = data1.hisTimetable[1].row[4].ITRT_CNTNT;
+    let TIME6 = data1.hisTimetable[1].row[5].ITRT_CNTNT;
 
-      <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-play fa-8x"></i>
-      </div>
+    let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
+    let MEAL2 = MEAL.replace(/\s/g,'');
+    let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
+    let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
 
-      <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-square fa-8x"></i>
-      </div>
+    return (
+      <div>
 
-      <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-face-laugh fa-8x"></i>
-      </div>
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
 
-      <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
-        <i className="fa-solid fa-book fa-8x"></i>
-      </div>
+        <div className="w-full px-3 grid gap-0 md:grid-cols-6 md:grid-rows-2 grid-cols-1 grid-rows-6">
 
-      <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
-      <div className="text-center text-[#f1f1f1] text-4xl">
-        <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
-      </div>
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME1}</h1>
+            <p className="text-[#787878]">1교시</p>
+          </div>
 
-      <div className="text-center text-[#787878] text-sm mt-20">
-        <p>© 2022. SourceH</p>
-        <p>{Today_show}</p>
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME2}</h1>
+            <p className="text-[#787878]">2교시</p>
+          </div>
+          
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME3}</h1>
+            <p className="text-[#787878]">3교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME4}</h1>
+            <p className="text-[#787878]">4교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME5}</h1>
+            <p className="text-[#787878]">5교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME6}</h1>
+            <p className="text-[#787878]">6교시</p>
+          </div>
+
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-play fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-square fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-face-laugh fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-book fa-8x"></i>
+        </div>
+
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <div className="text-center text-[#f1f1f1] text-4xl">
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
+        </div>
+
+        <div className="text-center text-[#787878] text-sm mt-20">
+          <p>© 2022. SourceH</p>
+          <p>{Today_show}</p>
+        </div>
       </div>
-    </div>
+    )
+  } else {
+    let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
+    let TIME2 = data1.hisTimetable[1].row[1].ITRT_CNTNT;
+    let TIME3 = data1.hisTimetable[1].row[2].ITRT_CNTNT;
+    let TIME4 = data1.hisTimetable[1].row[3].ITRT_CNTNT;
+    let TIME5 = data1.hisTimetable[1].row[4].ITRT_CNTNT;
+    let TIME6 = data1.hisTimetable[1].row[5].ITRT_CNTNT;
+    let TIME7 = data1.hisTimetable[1].row[6].ITRT_CNTNT;
+
+    let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
+    let MEAL2 = MEAL.replace(/\s/g,'');
+    let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
+    let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
+
+    return (
+      <div>
+
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMESTAMP</h1>
+
+        <div className="w-full px-3 grid gap-0 md:grid-cols-7 md:grid-rows-2 grid-cols-1 grid-rows-7">
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME1}</h1>
+            <p className="text-[#787878]">1교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME2}</h1>
+            <p className="text-[#787878]">2교시</p>
+          </div>
+          
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME3}</h1>
+            <p className="text-[#787878]">3교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME4}</h1>
+            <p className="text-[#787878]">4교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME5}</h1>
+            <p className="text-[#787878]">5교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME6}</h1>
+            <p className="text-[#787878]">6교시</p>
+          </div>
+
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="font-gongb text-3xl">{TIME7}</h1>
+            <p className="text-[#787878]">7교시</p>
+          </div>
+
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-play fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-square fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-face-laugh fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-book fa-8x"></i>
+        </div>
+
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">FOOD</h1>
+        <div className="text-center text-[#f1f1f1] text-4xl">
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
+        </div>
+
+        <div className="text-center text-[#787878] text-sm mt-20">
+          <p>© 2022. SourceH</p>
+          <p>{Today_show}</p>
+        </div>
+      </div>
     )
   }
 }
