@@ -75,6 +75,7 @@ function App() {
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
+          <p>Bucheon Technical High School</p>
           <p>{Today_show}</p>
         </div>
       </div>
@@ -114,6 +115,7 @@ function App() {
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
+          <p>Bucheon Technical High School</p>
           <p>{Today_show}</p>
         </div>
       </div>
@@ -193,6 +195,7 @@ function App() {
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
+          <p>Bucheon Technical High School</p>
           <p>{Today_show}</p>
         </div>
       </div>
@@ -290,6 +293,7 @@ function App() {
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
+          <p>Bucheon Technical High School</p>
           <p>{Today_show}</p>
         </div>
       </div>
@@ -396,6 +400,7 @@ function App() {
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
+          <p>Bucheon Technical High School</p>
           <p>{Today_show}</p>
         </div>
       </div>
