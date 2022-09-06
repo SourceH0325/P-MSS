@@ -20,6 +20,7 @@
 html {
   font-family: 'GongGothicMedium';
   background-color: #212529;
+  text-size-adjust: auto;
 }
 
 ::-webkit-scrollbar {
