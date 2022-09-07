@@ -1,19 +1,19 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-function App() {
+export default function App() {
 
   let Today = new Date(),
     Year = Today.getFullYear(),
     Month = (Today.getMonth() + 1),
     Day = Today.getDate();
-
+    
     Month = (Month < 10) ? '0' + Month : Month;
     Day = (Day < 10) ? '0' + Day : Day;
 
   let API_TODAY = Year + Month + Day;
   let Today_show = Year + '.' + Month + '.' + Day;
-
+  
   const [data, setData] = useState(null);
   const [data1, setData1] = useState(null);
 
@@ -189,7 +189,7 @@ function App() {
         </div>
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
-        <div className="text-center text-[#f1f1f1] text-4xl">
+        <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
         </div>
 
@@ -287,7 +287,7 @@ function App() {
         </div>
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
-        <div className="text-center text-[#f1f1f1] text-4xl">
+        <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
         </div>
 
@@ -394,7 +394,7 @@ function App() {
         </div>
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
-        <div className="text-center text-[#f1f1f1] text-4xl">
+        <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
           <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
         </div>
 
@@ -402,10 +402,9 @@ function App() {
           <p>© 2022. SourceH</p>
           <p>Bucheon Technical High School</p>
           <p>{Today_show}</p>
+          
         </div>
       </div>
     )
   }
 }
-
-export default App;
