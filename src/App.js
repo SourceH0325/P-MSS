@@ -142,6 +142,7 @@ export default function App() {
     let MEAL2 = MEAL.replace(/\s/g,'');
     let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
     let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
+    let MEAL5 = MEAL4.replace(/[a-z]/g, '');
 
     return (
       <div>
@@ -190,7 +191,7 @@ export default function App() {
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
-          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL5}</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
@@ -230,6 +231,7 @@ export default function App() {
     let MEAL2 = MEAL.replace(/\s/g,'');
     let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
     let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
+    let MEAL5 = MEAL4.replace(/[a-z]/g, '');
 
     return (
       <div>
@@ -288,7 +290,7 @@ export default function App() {
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
-          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL5}</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
@@ -332,6 +334,7 @@ export default function App() {
     let MEAL2 = MEAL.replace(/\s/g,'');
     let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
     let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
+    let MEAL5 = MEAL4.replace(/[a-z]/g, '');
 
     return (
       <div>
@@ -395,7 +398,7 @@ export default function App() {
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
-          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL4}</h1>
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL5}</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
