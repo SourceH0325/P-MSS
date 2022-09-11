@@ -11,25 +11,28 @@ export default function App() {
     Month = (Month < 10) ? '0' + Month : Month;
     Day = (Day < 10) ? '0' + Day : Day;
 
-  let API_TODAY = Year + Month + Day;
-  let Today_show = Year + '.' + Month + '.' + Day;
-  
+  let [API_TODAY, setAPI_TODAY] = useState(Year + Month + Day);
+  let API_TODAY_GO = API_TODAY.replace(/[-]/g, '');
+  let Today_show = Year + "-" + Month + "-" + Day;
+
   const [data, setData] = useState(null);
   const [data1, setData1] = useState(null);
 
   useEffect(() => {
-    axios.post(`https://open.neis.go.kr/hub/hisTimetable?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&ALL_TI_YMD=${API_TODAY}&AY=2022&SEM=2&GRADE=2&CLASS_NM=2`)
+    axios.post(`https://open.neis.go.kr/hub/hisTimetable?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&ALL_TI_YMD=${API_TODAY_GO}&AY=2022&SEM=2&GRADE=2&CLASS_NM=2`)
       .then(response => {
         setData1(response.data);
       })
-  }, [API_TODAY]);
+    console.log({API_TODAY_GO});
+  }, [API_TODAY_GO]);
 
   useEffect(() => {
-    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=${API_TODAY}`)
+    axios.post(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=${API_TODAY_GO}`)
       .then((response) => {
         setData(response.data);
       });
-  }, [API_TODAY]);
+    console.log({API_TODAY_GO});
+  }, [API_TODAY_GO]);
 
   if (!data) {
     return console.log('급식 데이터 로딩중...');
@@ -39,7 +42,7 @@ export default function App() {
     return console.log('시간표 데이터 로딩중...');
   }
 
-  if (!data || !data.mealServiceDietInfo) { // 데이터가 없으면
+  if (!data || !data.mealServiceDietInfo) { // 급식 데이터가 없으면
 
     return (
       <div>
@@ -48,7 +51,7 @@ export default function App() {
 
         <div className="w-full text-center">
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="text-3xl sm:text-4xl">시간표 데이터가 없습니다!</h1>
+            <h1 className="text-3xl sm:text-4xl">수업이 없습니다!</h1>
           </div>
         </div>
 
@@ -70,17 +73,23 @@ export default function App() {
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-3xl sm:text-4xl">
-          <h1 className="mt-5 mb-5">급식 데이터가 없습니다!</h1>
+          <h1 className="mt-5 mb-5">급식이 없습니다!</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
           <p>Bucheon Technical High School</p>
-          <p>{Today_show}</p>
+          <input
+            type="date"
+            value={Today_show}
+            onChange={(e) => setAPI_TODAY(e.target.value)}
+            className="text-center bg-[#212529] focus:outline-none select-none"
+          />
+          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
-  } else if (!data1 || !data1.hisTimetable) { // 데이터가 없으면
+  } else if (!data1 || !data1.hisTimetable) { // 시간표 데이터가 없으면
     return (
       <div>
 
@@ -88,7 +97,7 @@ export default function App() {
 
         <div className="w-full text-center">
           <div className="text-center text-[#f1f1f1]">
-            <h1 className="text-3xl sm:text-4xl">시간표 데이터가 없습니다!</h1>
+            <h1 className="text-3xl sm:text-4xl">수업이 없습니다!</h1>
           </div>
         </div>
 
@@ -110,17 +119,23 @@ export default function App() {
 
         <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
         <div className="text-center text-[#f1f1f1] text-3xl sm:text-4xl">
-          <h1 className="mt-5 mb-5">급식 데이터가 없습니다!</h1>
+          <h1 className="mt-5 mb-5">급식이 없습니다!</h1>
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
           <p>Bucheon Technical High School</p>
-          <p>{Today_show}</p>
+          <input
+            type="date"
+            value={Today_show}
+            onChange={(e) => setAPI_TODAY(e.target.value)}
+            className="text-center bg-[#212529] focus:outline-none select-none"
+          />
+          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
-  } else if (!data1 || !data1.hisTimetable[1].row[4]) { // 데이터가 없으면
+  } else if (!data1 || !data1.hisTimetable[1].row[4]) { // 5교시 데이터가 없으면
 
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
     let TIME1_R = TIME1.replace(/\s/g,'');
@@ -197,11 +212,17 @@ export default function App() {
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
           <p>Bucheon Technical High School</p>
-          <p>{Today_show}</p>
+          <input
+            type="date"
+            value={Today_show}
+            onChange={(e) => setAPI_TODAY(e.target.value)}
+            className="text-center bg-[#212529] focus:outline-none select-none"
+          />
+          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
-  } else if (!data1 || !data1.hisTimetable[1].row[6]) { // 데이터가 있으면
+  } else if (!data1 || !data1.hisTimetable[1].row[6]) { // 6교시 데이터가 있으면
 
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
     let TIME1_R = TIME1.replace(/\s/g,'');
@@ -296,11 +317,17 @@ export default function App() {
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
           <p>Bucheon Technical High School</p>
-          <p>{Today_show}</p>
+          <input
+            type="date"
+            value={Today_show}
+            onChange={(e) => setAPI_TODAY(e.target.value)}
+            className="text-center bg-[#212529] focus:outline-none select-none"
+          />
+          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
-  } else {
+  } else { // 위에 있는 조건이 아닐 경우
 
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
     let TIME1_R = TIME1.replace(/\s/g,'');
@@ -404,8 +431,13 @@ export default function App() {
         <div className="text-center text-[#787878] text-sm mt-20">
           <p>© 2022. SourceH</p>
           <p>Bucheon Technical High School</p>
-          <p>{Today_show}</p>
-          
+          <input
+            type="date"
+            value={Today_show}
+            onChange={(e) => setAPI_TODAY(e.target.value)}
+            className="text-center bg-[#212529] focus:outline-none select-none"
+          />
+          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
