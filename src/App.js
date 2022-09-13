@@ -11,9 +11,8 @@ export default function App() {
     Month = (Month < 10) ? '0' + Month : Month;
     Day = (Day < 10) ? '0' + Day : Day;
 
-  let [API_TODAY, setAPI_TODAY] = useState(Year + Month + Day);
+  let [API_TODAY, setAPI_TODAY] = useState(Year + "-" + Month + "-" + Day);
   let API_TODAY_GO = API_TODAY.replace(/[-]/g, '');
-  let Today_show = Year + "-" + Month + "-" + Day;
 
   const [data, setData] = useState(null);
   const [data1, setData1] = useState(null);
@@ -23,7 +22,6 @@ export default function App() {
       .then(response => {
         setData1(response.data);
       })
-    console.log({API_TODAY_GO});
   }, [API_TODAY_GO]);
 
   useEffect(() => {
@@ -31,15 +29,14 @@ export default function App() {
       .then((response) => {
         setData(response.data);
       });
-    console.log({API_TODAY_GO});
   }, [API_TODAY_GO]);
 
   if (!data) {
-    return console.log('급식 데이터 로딩중...');
+    return console.log('급식 데이터 로딩중');
   }
 
   if (!data1) {
-    return console.log('시간표 데이터 로딩중...');
+    return console.log('시간표 데이터 로딩중');
   }
 
   if (!data || !data.mealServiceDietInfo) { // 급식 데이터가 없으면
@@ -77,15 +74,14 @@ export default function App() {
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
-          <p>© 2022. SourceH</p>
+          <a href='https://github.com/SourceH0325'><p>© 2022. SourceH</p></a>
           <p>Bucheon Technical High School</p>
           <input
             type="date"
-            value={Today_show}
+            value={API_TODAY}
             onChange={(e) => setAPI_TODAY(e.target.value)}
             className="text-center bg-[#212529] focus:outline-none select-none"
           />
-          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
@@ -123,15 +119,14 @@ export default function App() {
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
-          <p>© 2022. SourceH</p>
+          <a href='https://github.com/SourceH0325'><p>© 2022. SourceH</p></a>
           <p>Bucheon Technical High School</p>
           <input
             type="date"
-            value={Today_show}
+            value={API_TODAY}
             onChange={(e) => setAPI_TODAY(e.target.value)}
             className="text-center bg-[#212529] focus:outline-none select-none"
           />
-          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
@@ -210,15 +205,14 @@ export default function App() {
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
-          <p>© 2022. SourceH</p>
+          <a href='https://github.com/SourceH0325'><p>© 2022. SourceH</p></a>
           <p>Bucheon Technical High School</p>
           <input
             type="date"
-            value={Today_show}
+            value={API_TODAY}
             onChange={(e) => setAPI_TODAY(e.target.value)}
             className="text-center bg-[#212529] focus:outline-none select-none"
           />
-          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
@@ -315,15 +309,14 @@ export default function App() {
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
-          <p>© 2022. SourceH</p>
+          <a href='https://github.com/SourceH0325'><p>© 2022. SourceH</p></a>
           <p>Bucheon Technical High School</p>
           <input
             type="date"
-            value={Today_show}
+            value={API_TODAY}
             onChange={(e) => setAPI_TODAY(e.target.value)}
             className="text-center bg-[#212529] focus:outline-none select-none"
           />
-          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
@@ -429,15 +422,14 @@ export default function App() {
         </div>
 
         <div className="text-center text-[#787878] text-sm mt-20">
-          <p>© 2022. SourceH</p>
+          <a href='https://github.com/SourceH0325'><p>© 2022. SourceH</p></a>
           <p>Bucheon Technical High School</p>
           <input
             type="date"
-            value={Today_show}
+            value={API_TODAY}
             onChange={(e) => setAPI_TODAY(e.target.value)}
             className="text-center bg-[#212529] focus:outline-none select-none"
           />
-          <p>SET DATE: {API_TODAY_GO}</p>
         </div>
       </div>
     )
