@@ -39,7 +39,7 @@ export default function App() {
     return console.log('시간표 데이터 로딩중');
   }
 
-  if (!data || !data.mealServiceDietInfo && !data1 || !data1.hisTimetabl) { // 급식 데이터와 시간표 데이터가 없으면
+  if (!data || !data.mealServiceDietInfo && !data1 || !data1.hisTimetable) { // 급식 데이터와 시간표 데이터가 없으면
 
     return (
       <div>
