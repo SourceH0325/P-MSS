@@ -893,22 +893,22 @@ export default function App() {
         <div className="w-full px-3 grid gap-0 md:grid-cols-6 md:grid-rows-2 grid-cols-1 grid-rows-6">
 
           <div className="text-center text-[#f1f1f1] mb-5 md:mb-0">
-            <h1 className="font-gongb text-3xl">전기회로</h1>
+            <h1 className="font-gongb text-3xl">전자 회로</h1>
             <p className="text-[#787878]">1교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1] mb-5 md:mb-0">
-            <h1 className="font-gongb text-3xl">전기회로</h1>
+            <h1 className="font-gongb text-3xl">전자 회로</h1>
             <p className="text-[#787878]">2교시</p>
           </div>
           
           <div className="text-center text-[#f1f1f1] mb-5 md:mb-0">
-            <h1 className="font-gongb text-3xl">전기회로</h1>
+            <h1 className="font-gongb text-3xl">전자 회로</h1>
             <p className="text-[#787878]">3교시</p>
           </div>
 
           <div className="text-center text-[#f1f1f1] mb-5 md:mb-0">
-            <h1 className="font-gongb text-3xl">전기회로</h1>
+            <h1 className="font-gongb text-3xl">전자 회로</h1>
             <p className="text-[#787878]">4교시</p>
           </div>
 
