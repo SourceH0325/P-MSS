@@ -39,7 +39,7 @@ export default function App() {
     return console.log('시간표 데이터 로딩중');
   }
 
-  if (!data || !data.mealServiceDietInfo && !data1 || !data1.hisTimetable) { // 급식 데이터와 시간표 데이터가 없으면
+  if ((!data || !data.mealServiceDietInfo) && (!data1 || !data1.hisTimetable)) { // 급식 데이터와 시간표 데이터가 없으면
 
     return (
       <div>
@@ -85,7 +85,7 @@ export default function App() {
         </div>
       </div>
     )
-  } else if (!data1 || !data1.hisTimetable[1].row[6] && !data || !data.mealServiceDietInfo ) { // 6교시 시간표 데이터가 있고 급식 데이터가 없다면
+  } else if ((!data1 || !data1.hisTimetable[1].row[6]) && (!data || !data.mealServiceDietInfo)) { // 6교시 시간표 데이터가 있고 급식 데이터가 없다면
 
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
     let TIME1_R = TIME1.replace(/\s/g,'');
@@ -183,7 +183,7 @@ export default function App() {
         </div>
       </div>
     )
-  } else if (!data1 || !data1.hisTimetable[1].row[7] && !data || !data.mealServiceDietInfo) { // 7교시 시간표 데이터가 있고 급식이 없다면
+  } else if ((!data1 || !data1.hisTimetable[1].row[7]) && (!data || !data.mealServiceDietInfo)) { // 7교시 시간표 데이터가 있고 급식이 없다면
 
     let TIME1 = data1.hisTimetable[1].row[0].ITRT_CNTNT;
     let TIME1_R = TIME1.replace(/\s/g,'');
