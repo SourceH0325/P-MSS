@@ -213,12 +213,6 @@ export default function App() {
     let TIME7_R = TIME7.replace(/\s/g,'');
     let TIME7_RE = TIME7_R.replace('*', '');
 
-    let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
-    let MEAL2 = MEAL.replace(/\s/g,'');
-    let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
-    let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
-    let MEAL5 = MEAL4.replace(/[a-z]/g, '');
-
     return (
       <div>
 
