@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     axios.post(`https://open.neis.go.kr/hub/hisTimetable?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&ALL_TI_YMD=${API_TODAY_GO}&AY=2022&SEM=2&GRADE=2&CLASS_NM=2`)
       .then(response => {
-        setData1(response.data);
+        setData1(response.data1);
       })
   }, [API_TODAY_GO]);
 
