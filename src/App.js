@@ -141,7 +141,6 @@ export default function App() {
         </div>
       </div>
     );
-  }
   } else if ((!data1 || !data1.hisTimetable[1].row[4]) && (!data || !data.mealServiceDietInfo)) { 
 
     console.log('NO DATA : MEAL // 4th TIMETABLE');
