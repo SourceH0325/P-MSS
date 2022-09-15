@@ -87,6 +87,61 @@ export default function App() {
         </div>
       </div>
     );
+  } else if (!data1 || !data1.hisTimetable) {
+
+    console.log('NO DATA : TIMETABLE // MEAL');
+
+    let MEAL = data.mealServiceDietInfo[1].row[0].DDISH_NM;
+    let MEAL2 = MEAL.replace(/\s/g,'');
+    let MEAL3 = MEAL2.replace(/<br\/>/g, '\n'); 
+    let MEAL4 = MEAL3.replace(/ *\([^)]*\) */g, '');
+    let MEAL5 = MEAL4.replace(/[a-z]/g, '');
+
+    return (
+      <div>
+
+        <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
+
+        <div className="w-full text-center">
+          <div className="text-center text-[#f1f1f1]">
+            <h1 className="text-3xl sm:text-4xl">수업이 없습니다!</h1>
+          </div>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-play fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 right-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-square fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-98 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-face-laugh fa-8x"></i>
+        </div>
+
+        <div className="text-[#37393C] absolute bottom-32 left-52 rotate-45 hidden lg:block">
+          <i className="fa-solid fa-book fa-8x"></i>
+        </div>
+
+        <h1 className="text-center font-gongb text-6xl text-[#787878] mt-20 mb-20">MEALS</h1>
+        <div className="text-center text-[#f1f1f1] text-3xl md:text-4xl">
+          <h1 className="mt-5 mb-5 whitespace-pre-line leading-relaxed">{MEAL5}</h1>
+        </div>
+
+        <div className="text-center text-[#787878] text-sm mt-20">
+          <a href='https://github.com/SourceH0325'><p>© 2022. SourceH</p></a>
+          <p>Bucheon Technical High School</p>
+          <input
+            type="date"
+            value={API_TODAY}
+            onChange={(e) => setAPI_TODAY(e.target.value)}
+            className="text-center bg-[#212529] focus:outline-none select-none"
+          />
+        </div>
+      </div>
+    );
+  }
   } else if ((!data1 || !data1.hisTimetable[1].row[4]) && (!data || !data.mealServiceDietInfo)) { 
 
     console.log('NO DATA : MEAL // 4th TIMETABLE');
