@@ -44,13 +44,13 @@ export default function App() {
 
   if (TimetableData.hisTimetable[1].row[0].ITRT_CNTNT === "수학Ⅰ") { // 월요일 AND 7교시
 
+    console.log('월요일 AND 7교시');
+
     let MEAL_1 = MealData.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL_2 = MEAL_1.replace(/\s/g,'');
     let MEAL_3 = MEAL_2.replace(/<br\/>/g, '\n'); 
     let MEAL_4 = MEAL_3.replace(/ *\([^)]*\) */g, '');
     let MEAL_E = MEAL_4.replace(/[a-z]/g, '');
-
-    console.log('월요일 AND 7교시');
 
     return (
       <div>
@@ -129,13 +129,14 @@ export default function App() {
       </div>
     );
   } else if (TimetableData.hisTimetable[1].row[0].ITRT_CNTNT === "한국사") { // 화요일 AND 7교시
+
+    console.log('화요일 AND 7교시');
+
     let MEAL_1 = MealData.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL_2 = MEAL_1.replace(/\s/g,'');
     let MEAL_3 = MEAL_2.replace(/<br\/>/g, '\n'); 
     let MEAL_4 = MEAL_3.replace(/ *\([^)]*\) */g, '');
     let MEAL_E = MEAL_4.replace(/[a-z]/g, '');
-
-    console.log('화요일 AND 7교시');
 
     return (
       <div>
@@ -214,13 +215,14 @@ export default function App() {
       </div>
     );
   } else if (TimetableData.hisTimetable[1].row[0].ITRT_CNTNT === "물리학Ⅰ") { // 수요일 AND 6교시
+
+    console.log('수요일 AND 6교시');
+
     let MEAL_1 = MealData.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL_2 = MEAL_1.replace(/\s/g,'');
     let MEAL_3 = MEAL_2.replace(/<br\/>/g, '\n'); 
     let MEAL_4 = MEAL_3.replace(/ *\([^)]*\) */g, '');
     let MEAL_E = MEAL_4.replace(/[a-z]/g, '');
-
-    console.log('수요일 AND 6교시');
 
     return (
       <div>
@@ -295,13 +297,13 @@ export default function App() {
     );
   } else if (TimetableData.hisTimetable[1].row[0].ITRT_CNTNT === "체육") { // 목요일 AND 7교시
 
+    console.log('목요일 AND 7교시');
+
     let MEAL_1 = MealData.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL_2 = MEAL_1.replace(/\s/g,'');
     let MEAL_3 = MEAL_2.replace(/<br\/>/g, '\n'); 
     let MEAL_4 = MEAL_3.replace(/ *\([^)]*\) */g, '');
     let MEAL_E = MEAL_4.replace(/[a-z]/g, '');
-
-    console.log('목요일 AND 7교시');
 
     return (
       <div>
@@ -381,13 +383,13 @@ export default function App() {
     );
   } else if (TimetableData.hisTimetable[1].row[0].ITRT_CNTNT === "전자 회로") { // 금요일 AND 6교시
 
+    console.log('금요일 AND 6교시');
+
     let MEAL_1 = MealData.mealServiceDietInfo[1].row[0].DDISH_NM;
     let MEAL_2 = MEAL_1.replace(/\s/g,'');
     let MEAL_3 = MEAL_2.replace(/<br\/>/g, '\n'); 
     let MEAL_4 = MEAL_3.replace(/ *\([^)]*\) */g, '');
     let MEAL_E = MEAL_4.replace(/[a-z]/g, '');
-
-    console.log('금요일 AND 6교시');
 
     return (
       <div>
@@ -461,6 +463,9 @@ export default function App() {
       </div>
     );
   } else {
+
+    console.log('NO DATA');
+
     return (
       <div>
         <h1 className="text-center font-gongb text-5xl sm:text-6xl text-[#787878] mt-10 mb-20">TIMETABLE</h1>
