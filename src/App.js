@@ -437,7 +437,7 @@ export default function App() {
               </div>
     
               <div className="text-center text-[#f1f1f1] mb-5 md:mb-0">
-                <h1 className="font-gongb text-3xl">중국어</h1>
+                <h1 className="font-gongb text-3xl">제2외국어</h1>
                 <p className="text-[#787878]">2교시</p>
               </div>
               
@@ -517,7 +517,7 @@ export default function App() {
               </div>
     
               <div className="text-center text-[#f1f1f1] mb-5 md:mb-0">
-                <h1 className="font-gongb text-3xl">중국어</h1>
+                <h1 className="font-gongb text-3xl">제2외국어</h1>
                 <p className="text-[#787878]">2교시</p>
               </div>
               
