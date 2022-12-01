@@ -15,19 +15,18 @@ export default function App() {
   let [API_TODAY, setAPI_TODAY] = useState(Year + "-" + Month + "-" + Day);
   let API_TODAY_GO = API_TODAY.replace(/[-]/g, '');
 
-  const NEIS_API_KEY = process.env.REACT_APP_NEIS_API;
   const [MealData, setMealData] = useState(null);
   const [TimetableData, setTimetableData] = useState(null);
 
   useEffect(() => {
     setTimetableData(null);
-    axios.get(`https://open.neis.go.kr/hub/hisTimetable?KEY=${NEIS_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&ALL_TI_YMD=${API_TODAY_GO}&AY=2022&SEM=2&GRADE=2&CLASS_NM=2`)
+    axios.get(`https://open.neis.go.kr/hub/hisTimetable?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&ALL_TI_YMD=${API_TODAY_GO}&AY=2022&SEM=2&GRADE=2&CLASS_NM=2`)
       .then(response => {
         setTimetableData(response.data);
       });
 
     setMealData(null);
-    axios.get(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${NEIS_API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=${API_TODAY_GO}`)
+    axios.get(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${process.env.REACT_APP_NEIS_API}&Type=json&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530254&MLSV_YMD=${API_TODAY_GO}`)
       .then(response => {
         setMealData(response.data);
       });
